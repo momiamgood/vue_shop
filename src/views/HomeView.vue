@@ -1,14 +1,16 @@
 <template>
-<h1>Главная</h1>
-
-  <nav>
-    <router-link to="{ name:register }">Регистрация</router-link>
-  </nav>
+  <app-nav></app-nav>
+  <h1>Главная</h1>
 </template>
 
 <script>
+import AppNav from "@/components/AppNav.vue";
+
 export default {
-  name: "HomeView"
+  name: "HomeView",
+  components: {
+    AppNav,
+  }
 }
 </script>
 
