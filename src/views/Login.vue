@@ -2,7 +2,7 @@
   <div>
     <app-nav></app-nav>
     <h1>Вход</h1>
-    <form>
+    <form @submit.prevent="onSubmit">
       <label for="email">Почта</label>
       <input type="email" id="email" v-model="email">
 
@@ -18,6 +18,7 @@
 import AppNav from "@/components/AppNav.vue";
 
 export default {
+
   name: "AppLogin",
   components: {AppNav},
   data () {

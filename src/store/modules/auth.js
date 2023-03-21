@@ -3,7 +3,7 @@ import authAPI from '@/api/auth'
 const state = {
     isSubmitting: false,
     currentUser: null,
-    validationErrors:[],
+    validationErrors: null,
     isLoggedIn: null
 }
 
@@ -20,19 +20,21 @@ const mutations = {
     registerFailure(state, payload) {
         state.isSubmitting = false
         state.validationErrors = payload
-    }
+    },
 }
 
 const actions = {
     register(context, user){
-        return new Promise(()=> {
+        return new Promise((resolve)=> {
             authAPI.register(user).then(response => {
                 context.commit('registerSuccess', response.data);
                 window.localStorage.setItem('token', response.data.data.user_token);
+                resolve(response.data.data);
                 console.log(response)
             })
-                .catch(result=>{
-                    console.log('result errors',result)
+                .catch ( result => {
+                    context.commit('registerFailure', state, result.response.data.error.errors);
+                    console.log('result errors', result);
                 })
         })
     }

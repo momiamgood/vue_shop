@@ -3,6 +3,7 @@
     <app-nav></app-nav>
     <h1>Регистрация</h1>
     <form @submit.prevent="onSubmit">
+      <app-val-errors v-if="validationErrors" :validationErrors="validationErrors"></app-val-errors>
       <label for="email">Почта</label>
       <input type="email" id="email" v-model="email">
 
@@ -19,11 +20,11 @@
 
 <script>
 import AppNav from "@/components/AppNav.vue";
-
+import AppValErrors from "@/components/ValErrors.vue";
 
 export default {
   name: "AppRegister",
-  components: {AppNav},
+  components: {AppValErrors, AppNav},
   data() {
     return {
         fio: '',
@@ -32,7 +33,12 @@ export default {
     }
   },
   computed: {
-
+    isSubmitting(){
+      return this.$store.state.auth.isSubmitting
+    },
+    validationErrors() {
+      return this.$store.state.auth.validationErrors
+    }
   },
   methods: {
     onSubmit() {
