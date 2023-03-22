@@ -27,17 +27,27 @@ export default {
       password: ''
     }
   },
+  computed: {
+    isSubmitting(){
+      return this.$store.state.auth.isSubmitting
+    },
+    validationErrors() {
+      return this.$store.state.auth.validationErrors
+    }
+  },
   methods: {
     onSubmit() {
       this.$store.dispatch('login', {
         email: this.email,
         password: this.password
       })
+          .then(() => {
+            this.$router.push({ name: "home" });
+          });
     }
   }
 }
 </script>
-
 
 <style scoped>
 div {
@@ -58,20 +68,32 @@ form {
 
 }
 
-input {
-  border: 1px solid black;
-  border-radius: 10px;
-  padding: 10px;
-  width: 300px;
-  height: 20px;
+label {
+  font-weight: 500;
 }
+
+input {
+  border: 2px solid #0f0f8d;
+  border-radius: 50px;
+  padding: 15px;
+  width: 300px;
+  height: 15px;
+  background: none;
+}
+input:active {
+  border: 3px solid #0f0f8d;
+}
+input:focus {
+  border: 3px solid #0f0f8d;
+}
+
 button {
   font-size: 15px;
   background-color: #0f0f8d;
   padding: 15px;
   color: white;
   border: none;
-  border-radius: 10px;
-  width: 200px;
+  border-radius: 50px;
+  width: 250px;
 }
 </style>

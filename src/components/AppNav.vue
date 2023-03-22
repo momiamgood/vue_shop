@@ -11,34 +11,35 @@
 <script>
 export default {
   name: "AppNav",
-  props: {
-
-  }
+  props: {}
 }
 </script>
 
 <style scoped>
-  nav {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-  }
-  nav > div {
-    display: flex;
-    flex-direction: row;
-    gap: 15px;
-  }
-  nav > div > a {
-    color: black;
-    text-decoration: none;
-  }
+nav {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
 
-  nav > div > a:hover {
-    color: darkblue;
-  }
-  .logo {
-    text-decoration: none;
-    color: black;
-  }
+nav > div {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}
+
+nav > div > a {
+  color: black;
+  text-decoration: none;
+}
+
+nav > div > a:hover {
+  color: darkblue;
+}
+
+.logo {
+  text-decoration: none;
+  color: black;
+}
 </style>

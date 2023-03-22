@@ -4,13 +4,15 @@
 </template>
 
 <style>
-#app {
-  color: #ffcdb2;
-  font-family: 'Roboto', sans-serif;
-  background:#6d6875;
-  width: 100vw;
-  height: 100vh;
+* {
+  color: #0f0f8d;
+  font-family: 'Montserrat Alternates', sans-serif;
+
 }
+body {
+  padding-top: 20px;
+}
+
 </style>
 
 <script setup>
